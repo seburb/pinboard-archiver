@@ -1,19 +1,25 @@
 import time
+
 from config import (
-    PINBOARD_API_TOKEN,
-    SLEEP_SECONDS,
     ARCHIVED_MARKER,
     LINKROT_TAG,
+    PINBOARD_API_TOKEN,
+    SLEEP_SECONDS,
 )
-from pinboard_api import fetch_all_bookmarks, update_pinboard
-from archive_api import closest_archive_snapshot, save_to_archive
+from pinboard_api import (
+    fetch_all_bookmarks,
+    update_pinboard,
+)
+from archive_api import (
+    closest_archive_snapshot,
+    save_to_archive,
+)
 from utils import (
     pinboard_to_archive_time_formatter,
     site_is_online,
 )
 
 def main():
-    
     if not PINBOARD_API_TOKEN:
         raise RuntimeError(
             "PINBOARD_API_TOKEN is not set. "

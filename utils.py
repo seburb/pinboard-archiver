@@ -1,4 +1,5 @@
 import requests
+
 from config import USER_AGENT
 
 def pinboard_to_archive_time_formatter(timestamp):

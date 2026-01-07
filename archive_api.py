@@ -1,6 +1,7 @@
 import time
-import requests
 from urllib.parse import quote
+import requests
+
 from config import ARCHIVE_API_CDX, ARCHIVE_API_SAVE, USER_AGENT
 from logging_config import setup_logger
 

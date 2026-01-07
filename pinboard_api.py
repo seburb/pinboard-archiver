@@ -1,4 +1,5 @@
 import requests
+
 from config import (
     PINBOARD_API_TOKEN,
     PINBOARD_PAGE_SIZE,
