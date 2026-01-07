@@ -8,7 +8,7 @@ Pinboard does offer an archival service itself, this project does not aim to rep
 ## How It Works
 Every bookmark from pinboard.in is loaded for the user with the given API token. If not archived yet, the script queries the CDX API of archive.org for snapshots close to the timestamp of the bookmark.
 
-If no snapshot exist and the website is still available pinbord-archiver creates a snapshot in archive.org and attaches the link to the bookmark's description, also a tag is added.
+If no snapshot exist and the website is still available pinbord-archiver creates a snapshot in archive.org and adds the link to the bookmark's description and tags it as archived.
 
 If the bookmarked site is offline and there is no snapshot available, the site is marked as linkrot.
 
@@ -19,4 +19,4 @@ Errors are logged to a log file, progress and status can be monitored via stdout
 ## Setup and Usage
 Get your secret token from [Pinboard's settings](https://pinboard.in/settings/password), add it to an `.env` or provide it as environment variable at runtime.
 
-Change constant and names in `configs.py` to adapt to your needs.
+Change constants and names in `configs.py` to adapt to your needs.
