@@ -25,6 +25,8 @@ def main():
             "PINBOARD_API_TOKEN is not set. "
             "Create a .env file or set the environment variable."
         )
+        sys.exit(1)
+
 
     bookmarks = fetch_all_bookmarks()
     total = len(bookmarks)
