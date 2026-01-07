@@ -8,6 +8,9 @@ logger = setup_logger()
 
 
 def closest_archive_snapshot(url, timestamp, timeout=60):
+    """
+    Find the closest archive.org snapshot of URL to given timestamp.
+    """
     params = {
         "url": url,
         "limit": 1,
@@ -23,7 +26,7 @@ def closest_archive_snapshot(url, timestamp, timeout=60):
         data = r.json()
 
         if len(data) > 1:
-            _, ts, original_url, *_ = data[1]
+            _, ts, original_url, *_ = data[1] # unpack reponse, discard unused values
             return f"https://web.archive.org/web/{ts}/{original_url}"
 
     except requests.RequestException as e:
@@ -33,6 +36,10 @@ def closest_archive_snapshot(url, timestamp, timeout=60):
 
 
 def save_to_archive(url, retries=3):
+    """
+    Save URL via archive.org API
+    Exponential backoff when API response is error code
+    """
     headers = {"User-Agent": USER_AGENT}
 
     for attempt in range(1, retries + 1):
@@ -43,7 +50,7 @@ def save_to_archive(url, retries=3):
             r = requests.get(
                 save_url,
                 headers=headers,
-                timeout=240,
+                timeout=240,            # Calls to archive.org, can take long to respond
                 allow_redirects=False,
             )
 
@@ -60,6 +67,6 @@ def save_to_archive(url, retries=3):
                 attempt, url, e,
             )
 
-        time.sleep(5 * attempt)
+        time.sleep(5 * attempt) # API is very strict, exponential backoff
 
     return None

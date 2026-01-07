@@ -1,7 +1,7 @@
 import requests
 from config import (
     PINBOARD_API_TOKEN,
-    PAGE_SIZE,
+    PINBOARD_PAGE_SIZE,
     PINBOARD_API_ALL,
     PINBOARD_API_ADD,
     ARCHIVED_MARKER,
@@ -10,6 +10,10 @@ from config import (
 )
 
 def fetch_all_bookmarks():
+    """
+    Fetch all bookmarks from Pinboard API
+    Use limit from constant PAGE_SIZE per call
+    """
     all_bookmarks = []
     start = 0
 
@@ -18,7 +22,7 @@ def fetch_all_bookmarks():
             "auth_token": PINBOARD_API_TOKEN,
             "format": "json",
             "start": start,
-            "results": PAGE_SIZE,
+            "results": PINBOARD_PAGE_SIZE,
         }
 
         r = requests.get(PINBOARD_API_ALL, params=params, timeout=100)
@@ -29,13 +33,17 @@ def fetch_all_bookmarks():
             break
 
         all_bookmarks.extend(batch)
-        start += PAGE_SIZE
+        start += PINBOARD_PAGE_SIZE
         print(f"Fetched {len(all_bookmarks)} bookmarks")
 
     return all_bookmarks
 
 
 def update_pinboard(bookmark, archive_link):
+    """
+    Fetch all bookmarks from Pinboard API
+    Max is 1000 entries per call, use limit from constant PAGE_SIZE
+    """
     old_extended = bookmark.get("extended", "") or ""
     tags = bookmark.get("tags", "") or ""
 
@@ -57,8 +65,8 @@ def update_pinboard(bookmark, archive_link):
     params = {
         "auth_token": PINBOARD_API_TOKEN,
         "url": bookmark["href"],
-        "description": bookmark["description"],
-        "extended": new_extended,
+        "description": bookmark["description"], # This is the title, stays unchanged
+        "extended": new_extended,               # This is the description, update
         "tags": " ".join(sorted(tag_set)),
         "replace": "yes",
         "format": "json",

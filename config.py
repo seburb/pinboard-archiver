@@ -10,14 +10,14 @@ PINBOARD_API_ADD = "https://api.pinboard.in/v1/posts/add"
 
 PINBOARD_API_TOKEN = os.getenv("PINBOARD_API_TOKEN")
 
-PAGE_SIZE = 500
-SLEEP_SECONDS = 5
+PINBOARD_PAGE_SIZE = 500         # Page size for Pinboard API call, 1000 is max
+SLEEP_SECONDS = 5       # Wait in between API calls 
 
 ARCHIVED_MARKER = "Archived at:"
 ARCHIVED_TAG = "archived"
 LINKROT_TAG = "_possible_linkrot"
 
-USER_AGENT = (
+USER_AGENT = (    # Archive.org does not like bots, mimic a common browser
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/120.0.0.0 Safari/537.36"
