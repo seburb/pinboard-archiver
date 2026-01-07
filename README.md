@@ -1,7 +1,7 @@
 # Pinboard Archiver
 > 404 is the loneliest number
 
-Pinboard Archiver is a script that automatically archives the web content of every bookmark saved in Pinboard.in
+Pinboard Archiver is a script that automatically archives the web content of every bookmark saved in [Pinboard.in](https://pinboard.in/)
 
 Pinboard does offer an archival service itself, this project does not aim to replace it but to add redundancy and to ensure bookmarks are preserved even if the original site or the complete service goes offline. Plus: Snapshots saved to archive.org are publicly accessible.
 
