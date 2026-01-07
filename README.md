@@ -6,7 +6,7 @@ Pinboard Archiver is a script that automatically archives the web content of eve
 Pinboard does offer an archival service itself, this project does not aim to replace it but to add redundancy and to ensure bookmarks are preserved even if the original site or the complete service goes offline. Plus: Snapshots saved to archive.org are publicly accessible.
 
 ## How It Works
-Every bookmark from pinboard.in is loaded for the user with the given API token. If not archived yet, the script queries the CDX API of archive.org if a snapshots exist that is close to the timestamp of the bookmark.
+Every bookmark from pinboard.in is loaded for the user with the given API token. If not archived yet, the script queries the CDX API of archive.org for snapshots close to the timestamp of the bookmark.
 
 If no snapshot exist and the website is still available pinbord-archiver creates a snapshot in archive.org and attaches the link to the bookmark's description, also a tag is added.
 
