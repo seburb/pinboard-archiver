@@ -1,3 +1,4 @@
+"""Provides constants"""
 import os
 from dotenv import load_dotenv
 
@@ -10,8 +11,8 @@ PINBOARD_API_ADD = "https://api.pinboard.in/v1/posts/add"
 
 PINBOARD_API_TOKEN = os.getenv("PINBOARD_API_TOKEN")
 
-PINBOARD_PAGE_SIZE = 500         # Page size for Pinboard API call, 1000 is max
-SLEEP_SECONDS = 5       # Wait in between API calls 
+PINBOARD_PAGE_SIZE = 500    # Page size for Pinboard API call, 1000 is max
+SLEEP_SECONDS = 5           # Wait in between API calls
 
 ARCHIVED_MARKER = "Archived at:"
 ARCHIVED_TAG = "archived"

@@ -1,4 +1,8 @@
+"""
+Archive web content of pinboard.in bookmarks
+"""
 import time
+import sys
 
 from config import (
     ARCHIVED_MARKER,
@@ -20,8 +24,9 @@ from utils import (
 )
 
 def main():
+    """Orchestrate script"""
     if not PINBOARD_API_TOKEN:
-        raise RuntimeError(
+        print(
             "PINBOARD_API_TOKEN is not set. "
             "Create a .env file or set the environment variable."
         )

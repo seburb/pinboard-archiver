@@ -1,9 +1,11 @@
+"""Provides logger"""
 import logging
 from logging.handlers import RotatingFileHandler
 
 from config import LOG_FILE
 
 def setup_logger():
+    """Setup logger with file rotation and defined log format"""
     logger = logging.getLogger("pinboard_archiver")
     logger.setLevel(logging.INFO)
 

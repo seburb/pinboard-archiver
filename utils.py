@@ -1,3 +1,4 @@
+"""Provides small helper functions"""
 import requests
 
 from config import USER_AGENT

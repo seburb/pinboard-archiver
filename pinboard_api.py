@@ -1,3 +1,4 @@
+"""Module provides functions to interact with pinboard.in API"""
 import requests
 
 from config import (

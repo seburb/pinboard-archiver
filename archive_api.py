@@ -1,3 +1,4 @@
+"""Module provides functions to interact with archive.org API"""
 import time
 from urllib.parse import quote
 import requests
