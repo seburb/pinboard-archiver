@@ -42,8 +42,9 @@ def fetch_all_bookmarks():
 
 def update_pinboard(bookmark, archive_link):
     """
-    Fetch all bookmarks from Pinboard API
-    Max is 1000 entries per call, use limit from constant PAGE_SIZE
+    Update bookmark data on pinboard.in
+    If archive_link is provided include link in description and add
+    tag ARCHIVED_TAG, else mark as linkrot
     """
     old_extended = bookmark.get("extended", "") or ""
     tags = bookmark.get("tags", "") or ""
